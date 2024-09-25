@@ -69,6 +69,7 @@ function submitAnswer() {
 }
 
 
+
 document.addEventListener('DOMContentLoaded', () => {
     displayQuestion();
 });
