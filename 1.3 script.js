@@ -28,17 +28,20 @@ function displayQuestion() {
     const questionElement = document.getElementById('question');
     const optionsElement = document.getElementById('options');
     const current = questions[currentQuestion];
+
     questionElement.innerText = current.question;
 
     optionsElement.innerHTML = '';
-    current.options.forEach((option, index) => {
+    
+    current.options.forEach(option => {
         optionsElement.innerHTML += `<label><input type="radio" name="option" value="${option}"> ${option}</label><br>`;
     });
 }
 
 function submitAnswer() {
     const options = document.getElementsByName('option');
-    let selectedOption;
+    let selectedOption = '';
+
     options.forEach(option => {
         if (option.checked) {
             selectedOption = option.value;
@@ -57,6 +60,7 @@ function submitAnswer() {
         displayQuestion();
     } else {
         document.getElementById('score').innerText = `Quiz finished! Your score: ${score}`;
+        document.getElementById('submitBtn').disabled = true; 
     }
 }
 
