@@ -48,11 +48,15 @@ function submitAnswer() {
         }
     });
 
+    const feedbackElement = document.getElementById('feedback');
+
     if (selectedOption === questions[currentQuestion].correctAnswer) {
         score += 10;
-        alert('Correct!');
+        feedbackElement.innerText = 'Correct!';
+        feedbackElement.style.color = 'green';
     } else {
-        alert('Wrong answer.');
+        feedbackElement.innerText = 'Wrong answer.';
+        feedbackElement.style.color = 'red';
     }
 
     currentQuestion++;
@@ -60,9 +64,10 @@ function submitAnswer() {
         displayQuestion();
     } else {
         document.getElementById('score').innerText = `Quiz finished! Your score: ${score}`;
-        document.getElementById('submitBtn').disabled = true; 
+        document.getElementById('submitBtn').disabled = true;
     }
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
     displayQuestion();
